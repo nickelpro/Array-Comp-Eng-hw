@@ -2,6 +2,12 @@
 #include <iostream>
 using namespace std;
 
+//ITS A BUNCH OF HACKS
+//IT ONLY DOES THIS ONE THING
+//HACK HACK HACK HACK NEVER USE!!!
+
+//This draws a nice little bar graph, it was coded in 5 minutes to do that and only that
+
 void bar(int pay[]) {
 int x,y;
 setpos(30,11);
