@@ -4,6 +4,6 @@ Northport High School
 
   The cursor position functions (setpos, getpos) and the clear function (clear) in this program are my own work
 because I needed something that was portable. The clear works fine and there are dozens like it floating around
-the web. I have absolutely know idea what the cursor positions will do on Windows, on Linux and all the rest
+the web. I have absolutely know idea what the cursor positions will do on Windows; on Linux and all the rest
 they rely on ANSI Escape codes, but those aren't implemented on Windows so I used the API instead. It should
 probably work, might be glitchy though.
