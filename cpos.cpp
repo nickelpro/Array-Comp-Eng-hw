@@ -8,8 +8,8 @@ coord_t coord;                   //Create our coordinate structure
 
 if (GetConsoleScreenBufferInfo (               //And assuming nothing breaks (thus the if statement)
     GetStdHandle(STD_OUTPUT_HANDLE), &csbi)) { //Pass the info into the screen info structure
-   coord.x = csbi.dwCursorPosition.X;          //Set our coordinate x equal to the screen info X
-   coord.y = csbi.dwCursorPosition.Y;          //Set our coordinate y equal to the screen info Y
+   coord.x = csbi.dwCursorPosition.X+1;        //Set our coordinate x equal to the screen info X
+   coord.y = csbi.dwCursorPosition.Y+1;        //Set our coordinate y equal to the screen info Y
    return coord;                               //Return our structure and we're done!
    }
 
@@ -24,8 +24,8 @@ void setpos(int x, int y) {
 CONSOLE_SCREEN_BUFFER_INFO csbi;                //Create screen info structure
 HANDLE hStdout=GetStdHandle(STD_OUTPUT_HANDLE); //Get the handle for Std Out
 GetConsoleScreenBufferInfo(hStdout, &csbi);     //Pass the info into the screen info structure
-csbi.dwCursorPosition.X=x;                      //Set the screen info X equal to our x
-csbi.dwCursorPosition.Y=y;                      //Set the screen info Y equal to our y
+csbi.dwCursorPosition.X=x-1;                    //Set the screen info X equal to our x
+csbi.dwCursorPosition.Y=y-1;                    //Set the screen info Y equal to our y
 SetConsoleCursorPosition(hStdout, csbi.dwCursorPosition); //And ship it out!
 }
 
