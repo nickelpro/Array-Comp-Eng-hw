@@ -1,14 +1,10 @@
 #include <iostream>
-#include <locale>
 #include "convert.hpp"
 #include "clear.hpp"
 #include "draw.hpp"
 using namespace std;
 
 int main() {
-
-//Just a semantic for C++ isdigit
-locale loc;
 
 //Enum just makes code convienent to read
 enum {p200_299,		
@@ -42,7 +38,7 @@ do {
 		//Accept the user input
 		cin >> response;
 		//Make sure it's a valid input
-	} while (response!="x"&&!isdigit(response[0],loc));
+	} while (response!="x"&&!isdigit(response[0]));
 	//If they haven't chosen to quit...
 	if (response!="x") {
 		//Convert to an int
