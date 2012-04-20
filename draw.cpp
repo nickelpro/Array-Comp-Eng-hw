@@ -2,7 +2,11 @@
 #include "cpos.hpp"
 #include "bar.hpp"
 using namespace std;
+
+
+
 void draw (int pay[]) {
+//Draws the main menu and dialogue
 cout << " Pay Range | Salesmen" <<endl;
 cout << "$200 - $299 : " << pay[0] <<endl;
 cout << "$300 - $399 : " << pay[1] <<endl;
@@ -15,6 +19,8 @@ cout << "$900 - $999 : " << pay[7] <<endl;
 cout << "$1000+      : " << pay[8] <<endl;
 cout << "Enter x to quit" <<endl;
 cout << "Input a salesman's gross sales:$";
+//Calls for the hacky bar graph
 bar(pay);
+//Sets the cursor back where it should be
 setpos(33,12);
 }
