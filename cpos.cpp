@@ -3,13 +3,14 @@
 #ifdef __WIN32__
 #include <windows.h>
 coord_t getpos() {               //We're going to get the current position of the cursor!
+int OFFSET=1;                    //Windows command promt coordinates are 1 off regular terminals
 CONSOLE_SCREEN_BUFFER_INFO csbi; //Create screen info structure
 coord_t coord;                   //Create our coordinate structure
 
 if (GetConsoleScreenBufferInfo (               //And assuming nothing breaks (thus the if statement)
     GetStdHandle(STD_OUTPUT_HANDLE), &csbi)) { //Pass the info into the screen info structure
-   coord.x = csbi.dwCursorPosition.X+1;        //Set our coordinate x equal to the screen info X
-   coord.y = csbi.dwCursorPosition.Y+1;        //Set our coordinate y equal to the screen info Y
+   coord.x = csbi.dwCursorPosition.X+OFFSET;   //Set our coordinate x equal to the screen info X
+   coord.y = csbi.dwCursorPosition.Y+OFFSET;   //Set our coordinate y equal to the screen info Y
    return coord;                               //Return our structure and we're done!
    }
 
@@ -24,8 +25,8 @@ void setpos(int x, int y) {
 CONSOLE_SCREEN_BUFFER_INFO csbi;                //Create screen info structure
 HANDLE hStdout=GetStdHandle(STD_OUTPUT_HANDLE); //Get the handle for Std Out
 GetConsoleScreenBufferInfo(hStdout, &csbi);     //Pass the info into the screen info structure
-csbi.dwCursorPosition.X=x-1;                    //Set the screen info X equal to our x
-csbi.dwCursorPosition.Y=y-1;                    //Set the screen info Y equal to our y
+csbi.dwCursorPosition.X=x-OFFSET;               //Set the screen info X equal to our x
+csbi.dwCursorPosition.Y=y-OFFSET;               //Set the screen info Y equal to our y
 SetConsoleCursorPosition(hStdout, csbi.dwCursorPosition); //And ship it out!
 }
 
@@ -84,6 +85,6 @@ return coord;
 
 void setpos(int x, int y) {
 //Yep, one escape code, just pass the coordinates
-cout << "\E["<<y<<";"<<x<<"H"; 
+cout << "\E["<<y<<";"<<x<<"H";
 }
 #endif
