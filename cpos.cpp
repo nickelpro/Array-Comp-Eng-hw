@@ -3,7 +3,7 @@
 #ifdef __WIN32__
 #include <windows.h>
 coord_t getpos() {               //We're going to get the current position of the cursor!
-int OFFSET=1;                    //Windows command promt coordinates are 1 off regular terminals
+const int OFFSET=1;                    //Windows command promt coordinates are 1 off regular terminals
 CONSOLE_SCREEN_BUFFER_INFO csbi; //Create screen info structure
 coord_t coord;                   //Create our coordinate structure
 
@@ -22,6 +22,7 @@ else {           //If it does break, just set everything 0 and return the struct
 }
 
 void setpos(int x, int y) {
+const int OFFSET=1;
 CONSOLE_SCREEN_BUFFER_INFO csbi;                //Create screen info structure
 HANDLE hStdout=GetStdHandle(STD_OUTPUT_HANDLE); //Get the handle for Std Out
 GetConsoleScreenBufferInfo(hStdout, &csbi);     //Pass the info into the screen info structure
